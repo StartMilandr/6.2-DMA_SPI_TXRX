@@ -152,7 +152,7 @@ void DMA_IRQHandler (void)
 
   // ѕерывание от TX приходит первым - все данные переданы в FIFO TX
   // Disable DMA TX
-  if (((DMA_Ctrl_Tx & 3) == 0) && TX_Started)   
+  if (((DMA_Ctrl_Tx & 7) == 0) && TX_Started)   
   {
     SSP_DMACmd(pBRD_SPIx->SPIx, SSP_DMA_TXE, DISABLE);
     DMA_Cmd(DMA_CH_SPI_TX, DISABLE);
@@ -162,7 +162,7 @@ void DMA_IRQHandler (void)
 
   // ѕерывание от RX приходит вторым - все данные прин€ты
   // Disable DMA RX 
-  if ((DMA_Ctrl_Rx & 3) == 0)
+  if ((DMA_Ctrl_Rx & 7) == 0)
   {
     SSP_DMACmd(pBRD_SPIx->SPIx, SSP_DMA_RXE, DISABLE);
     DMA_Cmd(DMA_CH_SPI_RX, DISABLE);
