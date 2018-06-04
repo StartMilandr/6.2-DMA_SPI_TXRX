@@ -29,7 +29,7 @@
     #define  BRD_SPI_PINS_FUNC        BRD_SPI1_F_PINS_FUNC 
     #define  BRD_SPI_PINS_FUNC_CLEAR  BRD_SPI1_F_PINS_FUNC_CLEAR
   
-    #define  BRD_SPI_CLOCK         (RST_CLK_PCLK_SSP1 | RST_CLK_PCLK_SSP2 | RST_CLK_PCLK_DMA)  // All SSP and DMA - from Errata
+    #define  BRD_SPI_CLOCK         (RST_CLK_PCLK_SSP2)  // All SSP and DMA - from Errata
     #define  BRD_SPI               MDR_SSP1
     
   #elif defined (SPI2_PORT_D)
@@ -39,7 +39,7 @@
     #define  BRD_SPI_PINS_FUNC        BRD_SPI2_D_PINS_FUNC 
     #define  BRD_SPI_PINS_FUNC_CLEAR  BRD_SPI2_D_PINS_FUNC_CLEAR    
   
-    #define  BRD_SPI_CLOCK         (RST_CLK_PCLK_SSP1 | RST_CLK_PCLK_SSP2 | RST_CLK_PCLK_DMA)  // All SSP and DMA - from Errata
+    #define  BRD_SPI_CLOCK         (RST_CLK_PCLK_SSP2)  // All SSP and DMA - from Errata
     #define  BRD_SPI               MDR_SSP2
     
   #endif  
@@ -50,17 +50,17 @@
 
 SSP_InitTypeDef _SSPInitStruct = 
 {
-  10,                         //  SSP_SCR - Фактор скорости передачи данных  
-  100,                        //  SSP_CPSDVSR - Предделитель тактовой частоты
+  10,                         //  SSP_SCR - Р¤Р°РєС‚РѕСЂ СЃРєРѕСЂРѕСЃС‚Рё РїРµСЂРµРґР°С‡Рё РґР°РЅРЅС‹С…  
+  100,                        //  SSP_CPSDVSR - РџСЂРµРґРґРµР»РёС‚РµР»СЊ С‚Р°РєС‚РѕРІРѕР№ С‡Р°СЃС‚РѕС‚С‹
   SSP_ModeMaster,             //  SSP_Mode
-  SSP_WordLength8b,           //  SSP_WordLength - Длина кадра
+  SSP_WordLength8b,           //  SSP_WordLength - Р”Р»РёРЅР° РєР°РґСЂР°
 
-  SSP_SPH_1Edge,              //  SSP_SPH  - Фаза тактового сигнала
-  SSP_SPO_Low,                //  SSP_SPO  - Полярность тактовых импульсов
-  SSP_FRF_SPI_Motorola,       //  SSP_FRF  - Протокол передачи данных
+  SSP_SPH_1Edge,              //  SSP_SPH  - Р¤Р°Р·Р° С‚Р°РєС‚РѕРІРѕРіРѕ СЃРёРіРЅР°Р»Р°
+  SSP_SPO_Low,                //  SSP_SPO  - РџРѕР»СЏСЂРЅРѕСЃС‚СЊ С‚Р°РєС‚РѕРІС‹С… РёРјРїСѓР»СЊСЃРѕРІ
+  SSP_FRF_SPI_Motorola,       //  SSP_FRF  - РџСЂРѕС‚РѕРєРѕР» РїРµСЂРµРґР°С‡Рё РґР°РЅРЅС‹С…
   
-  //SSP_HardwareFlowControl_SSE, // SSP_HardwareFlowControl - Аппаратное управление передачей данных
-  SSP_HardwareFlowControl_LBM   // тестовый режим - выход на вход
+  //SSP_HardwareFlowControl_SSE, // SSP_HardwareFlowControl - РђРїРїР°СЂР°С‚РЅРѕРµ СѓРїСЂР°РІР»РµРЅРёРµ РїРµСЂРµРґР°С‡РµР№ РґР°РЅРЅС‹С…
+  SSP_HardwareFlowControl_LBM   // С‚РµСЃС‚РѕРІС‹Р№ СЂРµР¶РёРј - РІС‹С…РѕРґ РЅР° РІС…РѕРґ
 };
 
 

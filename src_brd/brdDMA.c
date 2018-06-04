@@ -7,35 +7,35 @@
 
 void BRD_DMA_Init(void)
 {
-  // Включение тактирования модуля DMA
+  // Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РјРѕРґСѓР»СЏ DMA
   RST_CLK_PCLKcmd (DMA_CLOCK_SELECT, ENABLE);
 
-  // Сброс прерывания от DMA
+  // РЎР±СЂРѕСЃ РїСЂРµСЂС‹РІР°РЅРёСЏ РѕС‚ DMA
   NVIC_ClearPendingIRQ (DMA_IRQn);
 
-  // Деинициализация DMA
+  // Р”РµРёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ DMA
   DMA_DeInit();	
 }  
 
-// Инициализация модуля DMA
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РјРѕРґСѓР»СЏ DMA
 void BRD_DMA_Init_Channel (uint32_t DMA_Channel, DMA_ChannelInitTypeDef*  pDMAChannelInitStruct)
 {
-  // Инициализация канала DMA,
+  // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР°РЅР°Р»Р° DMA,
 	DMA_Init(DMA_Channel, pDMAChannelInitStruct);
 
-  // Назначение приоритета аппаратных прерываний от DMA
+  // РќР°Р·РЅР°С‡РµРЅРёРµ РїСЂРёРѕСЂРёС‚РµС‚Р° Р°РїРїР°СЂР°С‚РЅС‹С… РїСЂРµСЂС‹РІР°РЅРёР№ РѕС‚ DMA
   NVIC_SetPriority (DMA_IRQn, 1);
 
-  // Включение аппаратных прерываний от DMA
+  // Р’РєР»СЋС‡РµРЅРёРµ Р°РїРїР°СЂР°С‚РЅС‹С… РїСЂРµСЂС‹РІР°РЅРёР№ РѕС‚ DMA
   NVIC_EnableIRQ (DMA_IRQn); 
 	
   DMA_Cmd(DMA_Channel, ENABLE);
 }
 
-//// Прототип - Обработчик прерываний от DMA
+//// РџСЂРѕС‚РѕС‚РёРї - РћР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ РѕС‚ DMA
 //void DMA_IRQHandler (void)
 //{
-//  // Формирование нового цикла аналого-цифровых преобразований
+//  // Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ С†РёРєР»Р° Р°РЅР°Р»РѕРіРѕ-С†РёС„СЂРѕРІС‹С… РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёР№
 //  DMA_Init (DMA_Channel, &DMAChannelInitStruct);
 //  NVIC_ClearPendingIRQ (DMA_IRQn);
 //}	

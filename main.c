@@ -4,11 +4,11 @@
 #include "brdSPI.h"
 #include "brdDMA.h"
 
-//  Определения для отладочной платы выбранной в "brdSelect.h"
+//  РћРїСЂРµРґРµР»РµРЅРёСЏ РґР»СЏ РѕС‚Р»Р°РґРѕС‡РЅРѕР№ РїР»Р°С‚С‹ РІС‹Р±СЂР°РЅРЅРѕР№ РІ "brdSelect.h"
 #include "brdDef.h"
-//  Выбор SPI и настроек - модифицируется под реализацию
+//  Р’С‹Р±РѕСЂ SPI Рё РЅР°СЃС‚СЂРѕРµРє - РјРѕРґРёС„РёС†РёСЂСѓРµС‚СЃСЏ РїРѕРґ СЂРµР°Р»РёР·Р°С†РёСЋ
 #include "brdSPI_Select.h"
-//  Выбор настроек DMA - модифицируется под реализацию
+//  Р’С‹Р±РѕСЂ РЅР°СЃС‚СЂРѕРµРє DMA - РјРѕРґРёС„РёС†РёСЂСѓРµС‚СЃСЏ РїРѕРґ СЂРµР°Р»РёР·Р°С†РёСЋ
 #include "brdDMA_Select.h"
 
 #define LED_OK    BRD_LED_1
@@ -17,17 +17,14 @@
 #define DELAY_TICKS     4000000
 #define SPI_MASTER_MODE 1
 
-#define DMA_CH_SPI_TX  DMA_Channel_REQ_SSP1_TX
-#define DMA_CH_SPI_RX  DMA_Channel_REQ_SSP1_RX
+#ifdef USE_MDR1986VE9x
+  #define DMA_CH_SPI_TX  DMA_Channel_SSP2_TX
+  #define DMA_CH_SPI_RX  DMA_Channel_SSP2_RX
+#elif defined (USE_MDR1986VE1T)
+  #define DMA_CH_SPI_TX  DMA_Channel_REQ_SSP1_TX
+  #define DMA_CH_SPI_RX  DMA_Channel_REQ_SSP1_RX
+#endif
 
-
-//  DMA работает только с ОЗУ IRAM2 (с адреса 0x20100000) - прописать в Objects\DMA_SPI_TXRX.sct 
-//  так:
-//  RW_IRAM2 0x20100000 0x00004000  {
-//   *.o (EXECUTABLE_MEMORY_SECTION)
-//   .ANY (+RW +ZI)
-//  }
-//  В опциях линкера убрать галочку "Use Memory Layout from Debug" !
 #define  DATA_COUNT  10
 uint32_t DestBuf[DATA_COUNT] __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 uint32_t SrcBuf[DATA_COUNT]  __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
@@ -71,7 +68,7 @@ int main(void)
   BRD_LEDs_Init();
   
   //  SPI Init
-  // BRD_SPI_PortInit(pBRD_SPIx);  // В тестовом режиме SPI выводы не используются, в реальном включении - раскомментировать!
+  // BRD_SPI_PortInit(pBRD_SPIx);  // Р’ С‚РµСЃС‚РѕРІРѕРј СЂРµР¶РёРјРµ SPI РІС‹РІРѕРґС‹ РЅРµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ, РІ СЂРµР°Р»СЊРЅРѕРј РІРєР»СЋС‡РµРЅРёРё - СЂР°СЃРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ!
   BRD_SPI_Init(pBRD_SPIx, SPI_MASTER_MODE);
 
   //  DMA Init
@@ -150,9 +147,8 @@ void DMA_IRQHandler (void)
   uint32_t DMA_Ctrl_Tx = DMA_ControlTable[DMA_CH_SPI_TX].DMA_Control;
   uint32_t DMA_Ctrl_Rx = DMA_ControlTable[DMA_CH_SPI_RX].DMA_Control;
 
-  // Перывание от TX приходит первым - все данные переданы в FIFO TX
   // Disable DMA TX
-  if (((DMA_Ctrl_Tx & 7) == 0) && TX_Started)   
+  if (((DMA_Ctrl_Tx & 3) == 0) && TX_Started)   
   {
     SSP_DMACmd(pBRD_SPIx->SPIx, SSP_DMA_TXE, DISABLE);
     DMA_Cmd(DMA_CH_SPI_TX, DISABLE);
@@ -160,9 +156,8 @@ void DMA_IRQHandler (void)
     TX_Started = 0;
   }  
 
-  // Перывание от RX приходит вторым - все данные приняты
-  // Disable DMA RX 
-  if ((DMA_Ctrl_Rx & 7) == 0)
+  // Disable DMA RX  
+  if ((DMA_Ctrl_Rx & 3) == 0)
   {
     SSP_DMACmd(pBRD_SPIx->SPIx, SSP_DMA_RXE, DISABLE);
     DMA_Cmd(DMA_CH_SPI_RX, DISABLE);

@@ -82,6 +82,9 @@
     #define BRD_EBC_PORT_READY_CLK        RST_CLK_PCLK_PORTC
     #define BRD_EBC_PORT_READY_PINS       PORT_Pin_0
     #define BRD_EBC_PORT_READY_FUNC       PORT_FUNC_MAIN
+    
+//  ----------    DMA Definition -------------
+    #define DMA_CLOCK_SELECT  (RST_CLK_PCLK_SSP1 | RST_CLK_PCLK_SSP2 | RST_CLK_PCLK_DMA)
 
 #else
    Please, select board in brdSelect.h!

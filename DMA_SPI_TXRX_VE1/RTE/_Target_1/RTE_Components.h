@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'DMA_SPI_TXRX' 
+ * Project: 'DMA_SPI' 
  * Target:  'Target 1' 
  */
 

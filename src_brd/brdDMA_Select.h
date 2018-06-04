@@ -3,30 +3,30 @@
 
 #include "brdDMA.h"
 
-// Настройки управления данными DMA
+// РќР°СЃС‚СЂРѕР№РєРё СѓРїСЂР°РІР»РµРЅРёСЏ РґР°РЅРЅС‹РјРё DMA
 DMA_CtrlDataInitTypeDef DMA_DataCtrl_Pri = 
 {
-  0,                            // DMA_SourceBaseAddr - Адрес источника данных
-  0,                            // DMA_DestBaseAddr   - Адрес назначения данных
-  DMA_SourceIncWord,            // DMA_SourceIncSize  - Автоувеличение адреса источника данных
-  DMA_DestIncNo,                // DMA_DestIncSize    - Автоувеличение адреса назначения данных
-  DMA_MemoryDataSize_Word,      // DMA_MemoryDataSize - Размер пакета данных
-  DMA_Mode_Basic,               // DMA_Mode           - Режим работы DMA
-  10,                           // DMA_CycleSize      - Кол. данных на передачу (длина цикла DMA)
-  DMA_Transfers_1,              // DMA_NumContinuous  - Количество непрерывных передач (до арбитража)
-  DMA_SourcePrivileged,         // DMA_SourceProtCtrl - Режим защиты передатчика
-  DMA_DestPrivileged            // DMA_DestProtCtrl   - Режим защиты приемника
+  0,                            // DMA_SourceBaseAddr - РђРґСЂРµСЃ РёСЃС‚РѕС‡РЅРёРєР° РґР°РЅРЅС‹С…
+  0,                            // DMA_DestBaseAddr   - РђРґСЂРµСЃ РЅР°Р·РЅР°С‡РµРЅРёСЏ РґР°РЅРЅС‹С…
+  DMA_SourceIncHalfword,            // DMA_SourceIncSize  - РђРІС‚РѕСѓРІРµР»РёС‡РµРЅРёРµ Р°РґСЂРµСЃР° РёСЃС‚РѕС‡РЅРёРєР° РґР°РЅРЅС‹С…
+  DMA_DestIncNo,                // DMA_DestIncSize    - РђРІС‚РѕСѓРІРµР»РёС‡РµРЅРёРµ Р°РґСЂРµСЃР° РЅР°Р·РЅР°С‡РµРЅРёСЏ РґР°РЅРЅС‹С…
+  DMA_MemoryDataSize_HalfWord,  // DMA_MemoryDataSize - Р Р°Р·РјРµСЂ РїР°РєРµС‚Р° РґР°РЅРЅС‹С…
+  DMA_Mode_Basic,               // DMA_Mode           - Р РµР¶РёРј СЂР°Р±РѕС‚С‹ DMA
+  10,                           // DMA_CycleSize      - РљРѕР». РґР°РЅРЅС‹С… РЅР° РїРµСЂРµРґР°С‡Сѓ (РґР»РёРЅР° С†РёРєР»Р° DMA)
+  DMA_Transfers_1,              // DMA_NumContinuous  - РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРµРїСЂРµСЂС‹РІРЅС‹С… РїРµСЂРµРґР°С‡ (РґРѕ Р°СЂР±РёС‚СЂР°Р¶Р°)
+  DMA_SourcePrivileged,         // DMA_SourceProtCtrl - Р РµР¶РёРј Р·Р°С‰РёС‚С‹ РїРµСЂРµРґР°С‚С‡РёРєР°
+  DMA_DestPrivileged            // DMA_DestProtCtrl   - Р РµР¶РёРј Р·Р°С‰РёС‚С‹ РїСЂРёРµРјРЅРёРєР°
 };
   
-//  Настройки канала DMA
+//  РќР°СЃС‚СЂРѕР№РєРё РєР°РЅР°Р»Р° DMA
 DMA_ChannelInitTypeDef DMA_ChanCtrl = 
 {
-  &DMA_DataCtrl_Pri,        // DMA_PriCtrlData         - Основная структура управления данными
-  &DMA_DataCtrl_Pri,        // DMA_AltCtrlStr          - Альтернативная структура управления данными
+  &DMA_DataCtrl_Pri,        // DMA_PriCtrlData         - РћСЃРЅРѕРІРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° СѓРїСЂР°РІР»РµРЅРёСЏ РґР°РЅРЅС‹РјРё
+  &DMA_DataCtrl_Pri,        // DMA_AltCtrlStr          - РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° СѓРїСЂР°РІР»РµРЅРёСЏ РґР°РЅРЅС‹РјРё
    0, //DMA_AHB_Privileged,      // DMA_ProtCtrl 
-   DMA_Priority_Default,    // DMA_Priority            - Приоритет канала
+   DMA_Priority_Default,    // DMA_Priority            - РџСЂРёРѕСЂРёС‚РµС‚ РєР°РЅР°Р»Р°
    DMA_BurstClear,          // DMA_UseBurst
-   DMA_CTRL_DATA_PRIMARY    // DMA_SelectDataStructure - Используемая структура управления данными
+   DMA_CTRL_DATA_PRIMARY    // DMA_SelectDataStructure - РСЃРїРѕР»СЊР·СѓРµРјР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° СѓРїСЂР°РІР»РµРЅРёСЏ РґР°РЅРЅС‹РјРё
 };
   
 #endif	// _BRD_DMA_SELECT_H
