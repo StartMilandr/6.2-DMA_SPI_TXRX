@@ -424,70 +424,70 @@
   <RTE>
     <apis/>
     <components>
-      <component Cclass="Device" Cgroup="Startup_MDR1986BE1T" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T">
+      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T">
         <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="BKP" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="BKP" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="DMA" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="DMA" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="EEMPROM" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="EEMPROM" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="PORT" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="PORT" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="RST_CLK" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="RST_CLK" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
-      <component Cclass="Drivers" Cgroup="SSP" Cvendor="Keil" Cversion="1.3.1" condition="CON_MDR1986BXX">
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.4"/>
+      <component Cclass="Drivers" Cgroup="SSP" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BXX">
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
     </components>
     <files>
-      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\startup_MDR1986VE1T.s">
+      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\startup_MDR1986VE1T.s" version="1.5">
         <instance index="0">RTE\Device\MDR1986BE1T\startup_MDR1986VE1T.s</instance>
-        <component Cclass="Device" Cgroup="Startup_MDR1986BE1T" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.51"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
-      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.c">
+      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.c" version="1.5">
         <instance index="0">RTE\Device\MDR1986BE1T\system_MDR1986VE1T.c</instance>
-        <component Cclass="Device" Cgroup="Startup_MDR1986BE1T" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.51"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
-      <file attr="config" category="header" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.h">
+      <file attr="config" category="header" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.h" version="1.5">
         <instance index="0">RTE\Device\MDR1986BE1T\system_MDR1986VE1T.h</instance>
-        <component Cclass="Device" Cgroup="Startup_MDR1986BE1T" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
-        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.51"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>

@@ -2,11 +2,11 @@
 #define _BRD_DEF_VE92
 
 
-#ifdef USE_MDR1986VE9x
+#ifdef USE_BOARD_VE_92
 
 #include "brdDef_VE9x.h"
 
-//  Buttons Definition
+//  --------------  Buttons Definition  ------------
     #define BRD_BTN_PORT_SEL       MDR_PORTC
     #define BRD_BTN_PIN_SEL        PORT_Pin_2
 

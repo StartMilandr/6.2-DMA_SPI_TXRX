@@ -2,9 +2,9 @@
 #define _BRD_DEF_VE9x
 
 
-#ifdef USE_MDR1986VE9x
+#if defined (USE_BOARD_VE_91)  || defined (USE_BOARD_VE_92) || defined (USE_BOARD_VE_93) || defined (USE_BOARD_VE_94)
 
-//  SPI Definition
+//  ---------------  SPI Definition ----------------
     // SPI1 PortF
 	  #define BRD_SPI1_F_PIN_CLK	   PORT_Pin_1
 	  #define BRD_SPI1_F_PIN_TX		   PORT_Pin_0
@@ -19,7 +19,7 @@
     #define BRD_SPI1_F_PINS_FUNC_CLEAR  (~ ((3 << (1 * 2)) | \
                                             (3 << (0 * 2)) | \
                                             (3 << (3 * 2)) | \
-                                            (3 << (2 * 2)) | \
+                                            (3 << (2 * 2))   \
                                         ))
     
     //  SPI2 PortD

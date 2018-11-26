@@ -11,6 +11,11 @@
 //  Выбор настроек DMA - модифицируется под реализацию
 #include "brdDMA_Select.h"
 
+//  Выбор режима
+//  1 - тестирование по шлейфу. TX подан на RX внутри блока SPI.
+//  0 - TX и RX необходимо замкнуть снаружи на плате. (Остальные сигналы подключать не нужно).
+#define USE_SELF_TEST_MODE    0
+
 #define LED_OK    BRD_LED_1
 #define LED_ERR   BRD_LED_2
 
@@ -20,7 +25,7 @@
 #ifdef USE_MDR1986VE9x
   #define DMA_CH_SPI_TX  DMA_Channel_SSP2_TX
   #define DMA_CH_SPI_RX  DMA_Channel_SSP2_RX
-#elif defined (USE_MDR1986VE1T)
+#elif defined (USE_MDR1986VE1T) || defined (USE_MDR1986VE3)
   #define DMA_CH_SPI_TX  DMA_Channel_REQ_SSP1_TX
   #define DMA_CH_SPI_RX  DMA_Channel_REQ_SSP1_RX
 #endif
@@ -68,7 +73,10 @@ int main(void)
   BRD_LEDs_Init();
   
   //  SPI Init
-  // BRD_SPI_PortInit(pBRD_SPIx);  // В тестовом режиме SPI выводы не используются, в реальном включении - раскомментировать!
+#if !USE_SELF_TEST_MODE
+  BRD_SPI_PortInit(pBRD_SPIx);
+  pBRD_SPIx->pSSPInitStruct->SSP_HardwareFlowControl = SSP_HardwareFlowControl_SSE;
+#endif  
   BRD_SPI_Init(pBRD_SPIx, SPI_MASTER_MODE);
 
   //  DMA Init

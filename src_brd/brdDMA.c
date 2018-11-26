@@ -9,6 +9,10 @@ void BRD_DMA_Init(void)
 {
   // Включение тактирования модуля DMA
   RST_CLK_PCLKcmd (DMA_CLOCK_SELECT, ENABLE);
+  //  VE3 SPI block
+#ifdef DMA_CLOCK_SELECT_PER1  
+  RST_CLK_PCLK2cmd (DMA_CLOCK_SELECT_PER1, ENABLE);
+#endif
 
   // Сброс прерывания от DMA
   NVIC_ClearPendingIRQ (DMA_IRQn);
